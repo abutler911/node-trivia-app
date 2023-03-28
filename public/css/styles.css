@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    background-color: cornflowerblue;
+}
+
+form {
+    font-family: inherit;
+}
+
+option {
+    font-family: 'Merriweather', serif;
+}
