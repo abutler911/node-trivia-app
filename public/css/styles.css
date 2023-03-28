@@ -4,7 +4,10 @@ body {
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
     background-color: cornflowerblue;
+    height: 100%
 }
+
+
 
 form {
     font-family: inherit;
@@ -12,4 +15,11 @@ form {
 
 option {
     font-family: 'Merriweather', serif;
+}
+
+.card-container {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
