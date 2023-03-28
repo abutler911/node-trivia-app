@@ -7,6 +7,14 @@ const port = process.env.PORT || 3000;
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
@@ -32,9 +40,13 @@ app.get("/questions", async (req, res) => {
     const questions = response.data.results;
 
     const randomQuestion = getRandomQuestion(questions);
+    const allAnswers = shuffleArray([
+      ...randomQuestion.incorrect_answers,
+      randomQuestion.correct_answer,
+    ]);
     res.render("trivia", {
       question: randomQuestion,
-      answers: randomQuestion.incorrect_answers,
+      answers: allAnswers,
     });
   } catch (error) {
     console.error(error);
