@@ -26,7 +26,8 @@ function getRandomQuestion(questions) {
 
 app.get("/questions", async (req, res) => {
   try {
-    const { amount, type, category, difficulty } = req.query;
+    const { amount, type, category, difficulty, player1Name, player2Name } =
+      req.query;
 
     const response = await axios.get("https://opentdb.com/api.php", {
       params: {
@@ -47,6 +48,8 @@ app.get("/questions", async (req, res) => {
     res.render("trivia", {
       question: randomQuestion,
       answers: allAnswers,
+      player1Name: player1Name,
+      player2Name: player2Name,
     });
   } catch (error) {
     console.error(error);
