@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 const axios = require("axios");
+const cors = require("cors");
 
 const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(cors());
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -40,14 +42,15 @@ app.get("/questions", async (req, res) => {
     console.log(response.data);
     const questions = response.data.results;
 
-    const randomQuestion = getRandomQuestion(questions);
-    const allAnswers = shuffleArray([
-      ...randomQuestion.incorrect_answers,
-      randomQuestion.correct_answer,
-    ]);
+    questions.forEach((question) => {
+      question.allAnswers = shuffleArray([
+        ...question.incorrect_answers,
+        question.correct_answer,
+      ]);
+    });
+
     res.render("trivia", {
-      question: randomQuestion,
-      answers: allAnswers,
+      questions: questions,
       player1Name: player1Name,
       player2Name: player2Name,
     });

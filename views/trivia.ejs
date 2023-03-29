@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/trivia.css" />
   </head>
   <body>
     <nav class="navbar navbar-dark bg-primary">
@@ -28,6 +28,13 @@
       </div>
     </nav>
     <h1 class="text-center mt-5">Trivia!</h1>
+    <!-- Add a hidden input to store the questions array -->
+    <input
+      type="hidden"
+      id="questions"
+      value="<%= JSON.stringify(questions) %>"
+    />
+
     <div class="container">
       <div class="row mt-3">
         <div class="col-12 col-sm-6 d-flex justify-content-center">
@@ -89,33 +96,50 @@
       >
         <div class="card-container">
           <div class="card-body">
-            <h1 class="card-title"><%- question.question %></h1>
+            <h1 class="card-title" id="questionText">
+              <%- questions[0].question %>
+            </h1>
             <p class="card-text"></p>
-            <ol>
-              <% answers.forEach(answer => { %>
-              <li data-correct="<%= answer === question.correct_answer%>">
+            <ol id="answerList">
+              <% questions[0].allAnswers.forEach(answer => { %>
+              <li data-correct="<%- answer === questions[0].correct_answer%>">
                 <%- answer %>
               </li>
               <% }); %>
             </ol>
-            <button id="show-answer" class="btn btn-primary">
-              Show Answer
-            </button>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- ... -->
     <div class="container">
       <div class="row mt-3">
-        <div class="col-sm-12">
+        <div class="col-sm-4">
           <div class="d-flex justify-content-center mt-3">
-            <button id="resetButton" class="btn btn-danger">
+            <button id="show-answer" class="btn btn-primary w-100">
+              Show Answer
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="d-flex justify-content-center mt-3">
+            <button id="nextButton" class="btn btn-success w-100">
+              Next Question
+            </button>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="d-flex justify-content-center mt-3">
+            <button id="resetButton" class="btn btn-danger w-100">
               Start Over / Reset
             </button>
           </div>
         </div>
       </div>
     </div>
+    <!-- ... -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"

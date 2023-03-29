@@ -1,50 +1,57 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Merriweather', serif;
-    background-color: #f4f4f4;
+    font-family: "Merriweather", serif;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.container {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 h1 {
-    color: #0066cc;
-    font-weight: 900;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.card {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-}
-
-.card-title {
-    color: #0066cc;
+.form-label {
+    font-weight: 700;
     font-size: 1.1rem;
+    margin-bottom: 0.5rem;
 }
 
-#player1Name, #player2Name {
-    font-size: 2rem;
+.form-control,
+.form-select {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
 }
 
-.btn-outline-dark {
-    border-color: #0066cc;
-    color: #0066cc;
-}
-
-.btn-outline-dark:hover {
-    background-color: #0066cc;
-    color: #ffffff;
-}
-
-.btn-primary {
-    background-color: #0066cc;
-    border-color: #0066cc;
+button.btn {
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
     width: 100%;
 }
 
-.btn-danger {
-    background-color: #cc3300;
-    border-color: #cc3300;
-    width: 50%;
-}
-
-.navbar {
-    background-color: #0066cc;
+button.btn:hover {
+    background-color: #0056b3;
 }

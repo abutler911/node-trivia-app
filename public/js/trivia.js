@@ -1,5 +1,7 @@
 const player1Name = "<%= player1Name %>";
 const player2Name = "<%= player2Name %>";
+let currentQuestionIndex = 0;
+const questions = JSON.parse(document.getElementById("questions").value);
 
 let player1Score = parseInt(localStorage.getItem("player1Score")) || 0;
 let player2Score = parseInt(localStorage.getItem("player2Score")) || 0;
@@ -95,3 +97,55 @@ function resetGame() {
   localStorage.setItem("player2Score", 0);
   window.location.href = "/";
 }
+
+function loadNextQuestion() {
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++;
+    const nextQuestion = questions[currentQuestionIndex];
+    // Update the question text and answers
+    document.querySelector(".card-title").textContent = nextQuestion.question;
+    const listItems = document.querySelectorAll("li");
+    listItems.forEach((item, index) => {
+      item.textContent = nextQuestion.allAnswers[index];
+      item.style.color = "";
+      item.style.fontSize = "";
+      item.setAttribute(
+        "data-correct",
+        item.textContent === nextQuestion.correct_answer
+      );
+    });
+  } else {
+    alert("No more questions available.");
+  }
+}
+
+// document
+//   .getElementById("nextButton")
+//   .addEventListener("click", loadNextQuestion);
+
+document.getElementById("nextButton").addEventListener("click", () => {
+  const questions = JSON.parse(document.getElementById("questions").value);
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < questions.length) {
+    const nextQuestion = questions[currentQuestionIndex];
+    const answerList = document.getElementById("answerList");
+
+    // Update the question text
+    document.getElementById("questionText").textContent = nextQuestion.question;
+
+    // Clear the current answers
+    answerList.innerHTML = "";
+
+    // Add the new answers
+    nextQuestion.allAnswers.forEach((answer) => {
+      const li = document.createElement("li");
+      li.textContent = answer;
+      li.setAttribute("data-correct", answer === nextQuestion.correct_answer);
+      answerList.appendChild(li);
+    });
+  } else {
+    // Handle the end of the question list (e.g., show a message or redirect)
+    alert("You have reached the end of the questions.");
+  }
+});
