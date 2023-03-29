@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: cornflowerblue;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
@@ -9,6 +9,7 @@ body {
 
 .card {
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .card-title {
@@ -43,11 +44,59 @@ form {
     display: flex;
     justify-content: center;
     margin: 20px;
-    max-width: 90%;
+    width: 100%;
     min-height: 100%;
     padding: 10px;
 }
 
 .btn {
     width: 100%;
+} */
+
+
+body {
+    font-family: 'Merriweather', serif;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #0066cc;
+    font-weight: 900;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.card-title {
+    color: #0066cc;
+    font-size: 1.5rem;
+}
+
+.btn-outline-dark {
+    border-color: #0066cc;
+    color: #0066cc;
+}
+
+.btn-outline-dark:hover {
+    background-color: #0066cc;
+    color: #ffffff;
+}
+
+.btn-primary {
+    background-color: #0066cc;
+    border-color: #0066cc;
+    width: 100%;
+}
+
+.btn-danger {
+    background-color: #cc3300;
+    border-color: #cc3300;
+    width: 50%;
+}
+
+.navbar {
+    background-color: #0066cc;
 }
