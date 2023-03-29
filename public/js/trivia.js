@@ -81,7 +81,6 @@ document.getElementById("player2Decrement").addEventListener("click", () => {
 document.getElementById("resetButton").addEventListener("click", resetGame);
 
 document.getElementById("show-answer").addEventListener("click", function () {
-  console.log("button clicked");
   const listItems = document.querySelectorAll("li");
   listItems.forEach((item) => {
     if (item.getAttribute("data-correct") === "true") {
