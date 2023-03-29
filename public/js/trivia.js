@@ -119,10 +119,6 @@ function loadNextQuestion() {
   }
 }
 
-// document
-//   .getElementById("nextButton")
-//   .addEventListener("click", loadNextQuestion);
-
 document.getElementById("nextButton").addEventListener("click", () => {
   const questions = JSON.parse(document.getElementById("questions").value);
   currentQuestionIndex++;
@@ -145,7 +141,6 @@ document.getElementById("nextButton").addEventListener("click", () => {
       answerList.appendChild(li);
     });
   } else {
-    // Handle the end of the question list (e.g., show a message or redirect)
     alert("You have reached the end of the questions.");
   }
 });
